@@ -2,7 +2,7 @@ import React from "react";
 
 const BuyMeACoffeeButton = () => {
   const style = {
-    backgroundColor: "#FFDD00",
+    backgroundColor: "#FFA500",
   };
   return (
     <div style={style}>
