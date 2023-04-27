@@ -12,9 +12,58 @@ const Home = () => {
   const [inputPrompt, setInputPrompt] = useState("");
   const [chatLog, setChatLog] = useState([]);
   const [err, setErr] = useState(false);
+  const [files, setFiles] = useState([]);
   const [responseFromAPI, setReponseFromAPI] = useState(false);
 
   const chatLogRef = useRef(null);
+
+  function readFileAsText(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result);
+      reader.onerror = (e) => reject(e);
+      reader.readAsText(file);
+    }).catch((err) => console.log(err));
+  }
+
+  function createMessages(fileContents, maxLength) {
+    const allContent = fileContents.join(" ");
+    const tokens = allContent.split(/\s+/);
+  
+    const messages = [];
+    let currentMessage = "";
+  
+    for (const token of tokens) {
+      if (currentMessage.length + token.length + 1 > maxLength) {
+        messages.push(currentMessage.trim());
+        currentMessage = "";
+      }
+      currentMessage += `${token} `;
+    }
+  
+    if (currentMessage.trim().length > 0) {
+      messages.push(currentMessage.trim());
+    }
+  
+    return messages;
+  }
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+
+  const handleFileChange = (files) => {
+  // Convert the FileList to an array
+  const fileArray = Array.from(files);
+  // Store the array of files in the state or perform any other desired actions
+  setFiles(fileArray);
+};
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,22 +78,24 @@ const Home = () => {
         // hide the keyboard in mobile devices
         e.target.querySelector("input").blur();
       }
-
+      console.log('inputPrompt: ', inputPrompt);
       async function callAPI() {
         try {
-          const response = await fetch("https://talk-bot.onrender.com/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: inputPrompt }),
-          });
-          const data = await response.json();
-          setChatLog([
-            ...chatLog,
-            {
-              chatPrompt: inputPrompt,
-              botMessage: data.botResponse,
-            },
-          ]);
+          const fileContents = await Promise.all(files.map(readFileAsText));
+          console.log('fileContents: ', fileContents);
+          // const response = await fetch("http://localhost:4000/", {
+          //   method: "POST",
+          //   headers: { "Content-Type": "application/json" },
+          //   body: JSON.stringify({ message: inputPrompt, files: files }),
+          // });
+          // const data = await response.json();
+          // setChatLog([
+          //   ...chatLog,
+          //   {
+          //     chatPrompt: inputPrompt,
+          //     botMessage: data.botResponse,
+          //   },
+          // ]);
           setErr(false);
         } catch (err) {
           setErr(err);
@@ -87,7 +138,7 @@ const Home = () => {
             </svg>
           </button>
         </div>
-        <h1>TalkBot</h1>
+        <h1>Tikal Timy Chat</h1>
       </header>
 
       {showMenu && (
@@ -187,7 +238,7 @@ const Home = () => {
           <IntroSection />
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="inputPromptWrapper">
             <input
               name="inputPrompt"
@@ -199,6 +250,13 @@ const Home = () => {
               onChange={(e) => setInputPrompt(e.target.value)}
               autoFocus
             ></input>
+            <input
+    name="files"
+    id=""
+    type="file"
+    multiple
+    onChange={(e) => handleFileChange(e.target.files)}
+  />
             <button aria-label="form submit" type="submit">
               <svg
                 fill="#ADACBF"

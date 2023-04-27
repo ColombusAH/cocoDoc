@@ -7,7 +7,7 @@ const BuyMeACoffeeButton = () => {
   return (
     <div style={style}>
       <a
-        href="https://www.buymeacoffee.com/sushantdhimal"
+        href="https://github.com/ColombusAH"
         target="_blank"
         rel="noreferrer"
       >
