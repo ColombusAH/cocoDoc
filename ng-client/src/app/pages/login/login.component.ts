@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { GoogleAuthProvider } from "firebase/auth";
 
 @Component({
   selector: 'app-login',
@@ -11,17 +13,12 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loginForm: FormGroup<{
-    email: FormControl<string| null>;
-    password: FormControl<string| null>;
-  }>;
-
-  constructor() {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
-    });
-  }
+  afAuth = inject(AngularFireAuth);
+  router = inject(Router);
+  loginForm=new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required)
+  });
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -32,4 +29,14 @@ export class LoginComponent {
       this.loginForm.markAllAsTouched();
     }
   }
+
+  async signInWithGoogle() {
+    try {
+     await this.afAuth.signInWithPopup(new GoogleAuthProvider());
+      this.router.navigate(['/home']);
+    } catch (error) {
+      console.error('Error signing in with Google:', error);
+    }
+  }
+  
 }
