@@ -8,10 +8,10 @@
             <div tabindex="0" class="m-1 btn">Choose Language</div>
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
               <li>
-                <a (click)="toggleLangDirection()" href="#" class="text-base-content">English</a>
+                <a (click)="selectLanguage('en')" class="text-base-content">English</a>
               </li>
               <li>
-                <a href="#" class="text-base-content">Hebrew</a>
+                <a (click)="selectLanguage('he')" class="text-base-content">Hebrew</a>
               </li>
               <li>
             </ul>
@@ -36,4 +36,5 @@
         </ul>
       </div>
     </div>
+    <div>{{ 'HOME.HELLO' | translate: {value: 'avshalom'} }}</div>
   </div>

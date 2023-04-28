@@ -11,11 +11,18 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { appRoutes } from './app/app.routes';
 import { environment } from './environments/environment.development';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
+    importProvidersFrom(HttpClientModule),
     importProvidersFrom(
       AngularFireModule.initializeApp({
         apiKey: environment.firebaseConfig.FIREBASE_API_KEY,
@@ -31,5 +38,13 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(AngularFireAuthModule),
     importProvidersFrom(AngularFirestoreModule),
     importProvidersFrom(BrowserAnimationsModule),
+    importProvidersFrom( TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  }))
   ],
 }).catch((err) => console.error(err));

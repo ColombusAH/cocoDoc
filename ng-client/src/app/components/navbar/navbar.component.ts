@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -6,11 +7,12 @@ import { ThemeService } from 'src/app/services/theme.service';
   standalone: true,
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  imports: [TranslateModule]
 })
 export class NavbarComponent {
   themeService = inject(ThemeService);
-  toggleLangDirection() {
-    this.themeService.toggleLangDirection();
+  selectLanguage(lang: 'he' | 'en') {
+    this.themeService.changeLangTo(lang);
   }
 
 }
