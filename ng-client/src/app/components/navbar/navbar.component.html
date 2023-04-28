@@ -1,17 +1,17 @@
 <div class="navbar bg-base-100">
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+      <a class="btn btn-ghost normal-case text-xl">CocoDoc</a>
     </div>
     <div class="flex-none gap-2">
       <div class="form-control">
         <div class="dropdown dropdown-end">
-            <div tabindex="0" class="m-1 btn">Choose Language</div>
+            <div tabindex="0" class="m-1 btn">{{currentLang()}}</div>
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
               <li>
-                <a (click)="selectLanguage('en')" class="text-base-content">English</a>
+                <a (click)="selectLanguage('en')" class="text-base-content">{{ 'NAVBAR.LANGUAGES.EN' | translate }}</a>
               </li>
               <li>
-                <a (click)="selectLanguage('he')" class="text-base-content">Hebrew</a>
+                <a (click)="selectLanguage('he')" class="text-base-content">{{ 'NAVBAR.LANGUAGES.HE' | translate }}</a>
               </li>
               <li>
             </ul>
@@ -28,11 +28,16 @@
           <li>
             <a class="justify-between">
               Profile
-              <span class="badge">New</span>
+              <fa-icon [icon]="profileIcon"></fa-icon>
             </a>
           </li>
-          <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+          <li><a class="justify-between">Settings
+            <fa-icon [icon]="gearIcon"></fa-icon>
+              </a>
+          </li>
+          <li (click)="logout()"><a class="justify-between">Logout
+            <fa-icon [icon]="logoutIcon"></fa-icon>
+          </a></li>
         </ul>
       </div>
     </div>

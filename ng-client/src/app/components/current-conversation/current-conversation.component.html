@@ -1,0 +1,22 @@
+<div class="flex flex-col h-full">
+    <div class="overflow-y-auto p-4">
+      <!-- Messages list -->
+      <div class="mb-4" *ngFor="let message of conversation?.messages">
+        <div class="font-semibold text-gray-800">{{message.senderId}}</div>
+        <div class="text-gray-600">{{message.content}}</div>
+      </div>
+    </div>
+    <div class="border-t border-gray-200 p-4">
+      <!-- Message input -->
+      <div class="flex items-center">
+        <input type="text" class="flex-1 p-2 border border-gray-300 rounded" placeholder="Type your message...">
+        <button class="ml-2 p-2 bg-blue-500 text-white rounded">
+          <i class="material-icons">send</i>
+        </button>
+        <button class="ml-2 p-2 bg-gray-300 text-gray-700 rounded">
+          <i class="material-icons">attach_file</i>
+        </button>
+      </div>
+    </div>
+  </div>
+  

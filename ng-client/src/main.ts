@@ -14,6 +14,7 @@ import { environment } from './environments/environment.development';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -37,6 +38,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(AngularFireAuthModule),
     importProvidersFrom(AngularFireAuthModule),
     importProvidersFrom(AngularFirestoreModule),
+    importProvidersFrom(FontAwesomeModule),
     importProvidersFrom(BrowserAnimationsModule),
     importProvidersFrom( TranslateModule.forRoot({
       defaultLanguage: 'en',

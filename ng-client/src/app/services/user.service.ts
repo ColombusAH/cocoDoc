@@ -13,8 +13,8 @@ user= toSignal(this.afAuth.authState);
 user$= this.afAuth.authState;
 router = inject(Router);
 
-logout() {
-   this.afAuth.signOut();
+  async logout() {
+   await this.afAuth.signOut();
    return this.router.navigate(['/login']);
 }
 }

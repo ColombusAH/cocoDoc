@@ -1,5 +1,12 @@
 {
-    "HOME": {
-        "HELLO": "hello {{value}}"
-    }
+    "NAVBAR": {
+        "LANGUAGES": {
+            "EN": "English",
+            "HE": "Hebrew"
+        }
+    
+},
+"HOME": {
+    "HELLO": "hello {{value}}"
+}
 }
