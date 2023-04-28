@@ -8,7 +8,6 @@ import { tap } from 'rxjs';
 })
 export class UserService {
 afAuth = inject(AngularFireAuth);
-
-user= toSignal(this.afAuth.authState.pipe(tap(user => console.log('user', user?.multiFactor))));
-user$= this.afAuth.authState.pipe(tap(user => console.log('user', user?.multiFactor)))
+user= toSignal(this.afAuth.authState);
+user$= this.afAuth.authState;
 }
