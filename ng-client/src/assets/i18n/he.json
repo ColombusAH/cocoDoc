@@ -7,5 +7,10 @@
     },
     "HOME": {
         "HELLO": "שלום {{value}}"
+    },
+    "DASHBOARD": {
+    },
+    "CONVERSATIONS": {
+        "CREATE_NEW_CONVERSATION": "צור צ׳ט חדש"
     }
 }

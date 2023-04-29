@@ -3,6 +3,7 @@ import { IntroComponent } from './pages/intro/intro.component';
 import { loggedInGuard } from './guards/logged-in.guard';
 import { isLoggedOutGuard } from './guards/is-logged-out.guard';
 import { LayoutComponent } from './components/layout/layout.component';
+import { currentConversationResolver } from './resolvers/current-conversation.resolver';
 export const appRoutes: Route[]=[
     {
         path: 'intro',
@@ -25,10 +26,20 @@ export const appRoutes: Route[]=[
         loadComponent: () => import('./components/layout/layout.component').then(m => m.LayoutComponent ),
         children: [
             {
-                path: 'home',
-                loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)
+                path: '',
+                loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+                children: [
+                    {
+                        path: 'conversation/:id',
+                        resolve: {
+                            conversation: currentConversationResolver,
+
+                        },
+                        loadComponent: () => import('./components/current-conversation/current-conversation.component').then(m => m.CurrentConversationComponent)
+                    }
+                ]
             }
                   ]
     },
-    {path:'**', redirectTo: 'home'}
+    {path:'**', redirectTo: ''}
 ]

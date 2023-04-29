@@ -8,5 +8,10 @@
 },
 "HOME": {
     "HELLO": "hello {{value}}"
+},
+"DASHBOARD": {
+},
+"CONVERSATIONS": {
+    "CREATE_NEW_CONVERSATION": "Create New Chat"
 }
 }

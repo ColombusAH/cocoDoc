@@ -1,5 +1,6 @@
 import { NgFor } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Conversation } from 'src/app/models/conversation.model';
 
 @Component({
@@ -10,5 +11,6 @@ import { Conversation } from 'src/app/models/conversation.model';
   imports: [NgFor]
 })
 export class CurrentConversationComponent {
-@Input() conversation!: Conversation;
+  route = inject(ActivatedRoute);
+  conversation: Conversation | undefined = this.route.snapshot.data.conversation ;
 }

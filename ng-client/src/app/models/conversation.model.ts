@@ -5,7 +5,7 @@ export interface Conversation {
     title: string;
     createdAt: Date | Timestamp;
     createdBy: string; // User ID
-    aiAssistantId: string;
+    assistantId: string;
     participants: string[]; // Array of User IDs
     goal?: string;
     messages?: Message[];
