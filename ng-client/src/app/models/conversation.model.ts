@@ -9,4 +9,5 @@ export interface Conversation {
     participants: string[]; // Array of User IDs
     goal?: string;
     messages?: Message[];
+    fileURLs?: string[]; // Optional field for file URL if the message contains a file
   }

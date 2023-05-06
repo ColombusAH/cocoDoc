@@ -1,0 +1,41 @@
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="title" class="text-gray-600">{{'CREATE_CONVERSATION_FORM.TITLE' | translate}}</label>
+      <input type="text" id="title" formControlName="title" class="input w-full" placeholder="Enter chat title" required>
+    </div>
+    <div class="mb-4">
+      <label for="goal" class="text-gray-600">{{'CREATE_CONVERSATION_FORM.GOAL' | translate}}</label>
+      <textarea id="goal" formControlName="goal" class="input w-full h-20" placeholder="Enter chat goal"></textarea>
+    </div>
+    <div class="mb-4">
+      <label for="file" class="text-gray-600">{{'CREATE_CONVERSATION_FORM.FILES' | translate}}</label>
+      <div>
+        <!-- <input type="file" id="file" (change)="onFileSelected($event)" formControlName="file" multiple [placeholder]="'CREATE_CONVERSATION_FORM.FILES' | translate"> -->
+        <div class="relative">
+          <input
+            type="file"
+            id="file"
+            class="hidden opacity-0 w-full h-full cursor-pointer z-1"
+            (change)="onFileSelected($event)"
+            formControlName="file"
+            multiple
+          />
+          <label for="file" class="btn btn-success cursor-pointer">
+            {{'CREATE_CONVERSATION_FORM.CHOOSE_FILES' | translate}}
+          </label>
+        </div>
+        
+      </div>
+    </div>
+    <div class="flex justify-between items-center mt-4">
+      <button type="submit" class="btn btn-primary px-4 py-2 rounded shadow-md">
+        {{'CREATE_CONVERSATION_FORM.SUBMIT' | translate}}
+      </button>
+      <button class="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded shadow-md transition duration-200">
+        {{'CREATE_CONVERSATION_FORM.CANCEL' | translate}}
+      </button>
+    </div>
+    
+    
+  </form>
+  

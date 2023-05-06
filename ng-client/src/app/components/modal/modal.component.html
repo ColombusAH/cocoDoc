@@ -1,0 +1,11 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center">
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <div class="bg-white w-full max-w-md mx-auto rounded shadow-lg p-6 relative">
+    <button class="absolute top-0 end-0 m-4 text-gray-600 hover:text-gray-800" (click)="onClose()">
+      <i class="material-icons">{{'CLOSE' | translate}}</i>
+    </button>
+    <div class="flex items-center justify-center h-full">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

@@ -8,17 +8,17 @@ export class ThemeService {
 
   document = inject(DOCUMENT);
   translate = inject(TranslateService);
-  currentLang = signal<'English'| 'Hebrew'>('English');
+  currentLang = signal<'EN'| 'HE'>('EN');
 
   
 
   changeLangTo(lang: 'he' | 'en') {
     this.translate.use(lang);
     if(lang === 'he') {
-      this.currentLang.set('Hebrew')
+      this.currentLang.set('HE')
       this.changeLangDirection('rtl') ;
     } else {
-      this.currentLang.set('English')
+      this.currentLang.set('EN')
       this.changeLangDirection('ltr') ;
     }
 }

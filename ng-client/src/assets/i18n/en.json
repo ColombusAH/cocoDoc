@@ -1,4 +1,5 @@
 {
+    "Close": "Close",
     "NAVBAR": {
         "LANGUAGES": {
             "EN": "English",
@@ -13,5 +14,32 @@
 },
 "CONVERSATIONS": {
     "CREATE_NEW_CONVERSATION": "Create New Chat"
+},
+"CREATE_CONVERSATION_FORM": {
+    "TITLE": "Title",
+    "SUBMIT": "Create",
+    "CANCEL": "Cancel",
+    "TITLE_PLACEHOLDER": "Enter Chat Title",
+    "GOAL": "Goal",
+    "GOAL_PLACEHOLDER": "Enter Chat Goal",
+    "CHOOSE_FILES": "Choose Files",
+    "FILES": "Files",
+    "ERRORS": {
+        "NAME": {
+            "REQUIRED": "Name is required",
+            "MIN_LENGTH": "Name must be at least 3 characters long",
+            "MAX_LENGTH": "Name must be at most 20 characters long"
+        },
+        "DESCRIPTION": {
+            "REQUIRED": "Description is required",
+            "MIN_LENGTH": "Description must be at least 3 characters long",
+            "MAX_LENGTH": "Description must be at most 20 characters long"
+        },
+        "IMAGE": {
+            "REQUIRED": "Image is required",
+            "MIN_LENGTH": "Image must be at least 3 characters long",
+            "MAX_LENGTH": "Image must be at most 20 characters long"
+        }
+    }
 }
 }

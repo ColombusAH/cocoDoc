@@ -5,7 +5,7 @@
     <div class="flex-none gap-2">
       <div class="form-control">
         <div class="dropdown dropdown-end">
-            <div tabindex="0" class="m-1 btn">{{currentLang()}}</div>
+            <div tabindex="0" class="m-1 btn">{{'NAVBAR.LANGUAGES.' + currentLang() | translate}}</div>
             <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
               <li>
                 <a (click)="selectLanguage('en')" class="text-base-content">{{ 'NAVBAR.LANGUAGES.EN' | translate }}</a>
@@ -15,7 +15,7 @@
               </li>
               <li>
             </ul>
-          </div>
+        </div>
           
       </div>
       <div class="dropdown dropdown-end">

@@ -1,4 +1,5 @@
 {
+    "CLOSE": "סגור",
     "NAVBAR": {
         "LANGUAGES": {
             "EN": "אנגלית",
@@ -12,5 +13,14 @@
     },
     "CONVERSATIONS": {
         "CREATE_NEW_CONVERSATION": "צור צ׳ט חדש"
+    },
+    "CREATE_CONVERSATION_FORM": {
+        "TITLE": "צור צ׳ט חדש",
+        "SUBMIT": "צור ציט",
+        "CANCEL": "בטל",
+        "CHOOSE_FILES": "בחר קבצים",
+        "FILES":"קבצים",
+        "GOAL": "מטרה"
+
     }
 }
